@@ -77,9 +77,9 @@ void WebServer::log_write()
     if (0 == m_close_log)
     {
         //初始化日志
-        if (1 == m_log_write)
+        if (1 == m_log_write) // 异步写入
             Log::get_instance()->init("./ServerLog", m_close_log, 2000, 800000, 800);
-        else
+        else    // 同步写入
             Log::get_instance()->init("./ServerLog", m_close_log, 2000, 800000, 0);
     }
 }
@@ -103,7 +103,7 @@ void WebServer::thread_pool()
 void WebServer::eventListen()
 {
     //网络编程基础步骤
-    m_listenfd = socket(PF_INET, SOCK_STREAM, 0);
+    m_listenfd = socket(AF_INET, SOCK_STREAM, 0);
     assert(m_listenfd >= 0);
 
     //优雅关闭连接

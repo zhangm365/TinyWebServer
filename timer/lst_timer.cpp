@@ -162,7 +162,22 @@ int Utils::setnonblocking(int fd)
 //将内核事件表注册读事件，ET模式，选择开启EPOLLONESHOT
 void Utils::addfd(int epollfd, int fd, bool one_shot, int TRIGMode)
 {
-    epoll_event event;
+    /************
+        typedef union epoll_data {
+               void        *ptr;
+               int          fd;
+               uint32_t     u32;
+               uint64_t     u64;
+           } epoll_data_t;
+
+           struct epoll_event {
+               uint32_t     events;      /* Epoll events */
+               epoll_data_t data;        /* User data variable //
+           };
+
+    ***************/
+    
+    epoll_event event;  
     event.data.fd = fd;
 
     if (1 == TRIGMode)
