@@ -5,7 +5,7 @@
 #include <pthread.h>
 #include <semaphore.h>
 
-class sem
+class sem   // POSIX信号量
 {
 public:
     sem()
@@ -36,7 +36,7 @@ public:
     }
 
 private:
-    sem_t m_sem;
+    sem_t m_sem;    // an unnamed semaphore
 };
 class locker
 {

@@ -135,7 +135,7 @@ void WebServer::eventListen()
     utils.init(TIMESLOT);
 
     //epoll创建内核事件表
-    epoll_event events[MAX_EVENT_NUMBER];
+    // epoll_event events[MAX_EVENT_NUMBER];
     m_epollfd = epoll_create1(0);
     assert(m_epollfd != -1);
 
@@ -217,7 +217,6 @@ bool WebServer::dealclinetdata()
         }
         timer(connfd, client_address);
     }
-
     else
     {
         while (1)

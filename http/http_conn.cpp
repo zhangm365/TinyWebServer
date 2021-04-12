@@ -352,14 +352,14 @@ http_conn::HTTP_CODE http_conn::process_read()
         LOG_INFO("%s", text);
         switch (m_check_state)
         {
-        case CHECK_STATE_REQUESTLINE:
+        case CHECK_STATE_REQUESTLINE:   // 请求行
         {
             ret = parse_request_line(text);
             if (ret == BAD_REQUEST)
                 return BAD_REQUEST;
             break;
         }
-        case CHECK_STATE_HEADER:
+        case CHECK_STATE_HEADER:    // 请求头部
         {
             ret = parse_headers(text);
             if (ret == BAD_REQUEST)
@@ -370,7 +370,7 @@ http_conn::HTTP_CODE http_conn::process_read()
             }
             break;
         }
-        case CHECK_STATE_CONTENT:
+        case CHECK_STATE_CONTENT:   // 报文主体
         {
             ret = parse_content(text);
             if (ret == GET_REQUEST)
