@@ -103,7 +103,7 @@ void WebServer::thread_pool()
 void WebServer::eventListen()
 {
     //网络编程基础步骤
-    m_listenfd = socket(AF_INET, SOCK_STREAM, 0);
+    m_listenfd = socket(PF_INET, SOCK_STREAM, 0);
     assert(m_listenfd >= 0);
 
     //优雅关闭连接
