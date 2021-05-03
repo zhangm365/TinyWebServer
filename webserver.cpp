@@ -122,7 +122,7 @@ void WebServer::eventListen()
     struct sockaddr_in address;
     bzero(&address, sizeof(address));
     address.sin_family = AF_INET;
-    address.sin_addr.s_addr = htonl(INADDR_ANY);
+    address.sin_addr.s_addr = htonl(INADDR_ANY);    // INADDR_ANY (0.0.0.0) means any address for binding
     address.sin_port = htons(m_port);
 
     int flag = 1;
