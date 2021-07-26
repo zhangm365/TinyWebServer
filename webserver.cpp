@@ -201,7 +201,7 @@ bool WebServer::dealclinetdata()
 {
     struct sockaddr_in client_address;
     socklen_t client_addrlength = sizeof(client_address);
-    if (0 == m_LISTENTrigmode)
+    if (0 == m_LISTENTrigmode)  // LT
     {
         int connfd = accept(m_listenfd, (struct sockaddr *)&client_address, &client_addrlength);
         if (connfd < 0)
@@ -217,7 +217,7 @@ bool WebServer::dealclinetdata()
         }
         timer(connfd, client_address);
     }
-    else
+    else    // ET
     {
         while (1)
         {
